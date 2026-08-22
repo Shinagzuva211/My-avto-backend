@@ -8,6 +8,8 @@ const connectDB = require('./config/db') // MongoDB'ga ulanish funksiyasini impo
 
 const carRoutes = require("./routes/carRoutes"); // avtomobillar bilan bog'liq marshrutlarni import qiladi.
 
+const aiRoutes = require("./routes/aiRoutes") // AI bilan bog'liq marshrutlarni import qiladi.
+
 const logger = require("./middlewares/logger") //  so'rovlarni log qiluvchi middleware'ni import qiladi.
 
 const app = express(); //  Express ilovasini yaratadi.
@@ -19,6 +21,8 @@ app.use(express.json()); // so'rovlar body'sini JSON formatida parslaydi.
 app.use(logger) // har bir so'rov uchun logger middleware'ni ishga tushiradi.
 
 app.use("/cars", carRoutes); //  barcha /cars bilan boshlanadigan so'rovlarni carRoutes'ga yo'naltiradi.
+
+app.use("/ai", aiRoutes)  //  barcha /ai bilan boshlanadigan so'rovlarni aiRoutes'ga yo'naltiradi.
 
 const PORT = process.env.PORT || 3000; //  portni .env dan oladi, yo'q bo'lsa 3000.
 
